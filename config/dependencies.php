@@ -1,13 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 use DI\ContainerBuilder;
-use Psr\Log\LoggerInterface;
-use Psr\Container\ContainerInterface;
-use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
+use Regnerisch\Skeleton\Services\Renderer;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
-use Regnerisch\Skeleton\Services\Renderer;
 
 return static function (ContainerBuilder $containerBuilder) {
     $containerBuilder->addDefinitions([
@@ -30,6 +32,6 @@ return static function (ContainerBuilder $containerBuilder) {
         },
         Renderer::class => static function (ContainerInterface $container) {
             return new Renderer($container->get(Environment::class), $container->get(LoggerInterface::class));
-        }
+        },
     ]);
 };

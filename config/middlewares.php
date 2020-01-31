@@ -1,12 +1,14 @@
 <?php
 
-use Slim\App;
-use Middlewares\TrailingSlash;
-use Psr\Container\ContainerInterface;
-use Neomerx\Cors\Strategies\Settings;
-use Psr\Log\LoggerInterface;
-use Neomerx\Cors\Analyzer;
+declare(strict_types=1);
+
 use Middlewares\Cors;
+use Middlewares\TrailingSlash;
+use Neomerx\Cors\Analyzer;
+use Neomerx\Cors\Strategies\Settings;
+use Psr\Container\ContainerInterface;
+use Psr\Log\LoggerInterface;
+use Slim\App;
 
 return static function (App $app, ContainerInterface $container) {
     $app->add((new TrailingSlash())->redirect());

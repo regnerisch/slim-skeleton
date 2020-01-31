@@ -1,8 +1,8 @@
 <?php
 
+declare(strict_types=1);
 
 namespace Regnerisch\Skeleton\Services;
-
 
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
@@ -31,7 +31,8 @@ class Renderer
         return $response;
     }
 
-    public function renderFile(string $name, array $context = []) {
+    public function renderFile(string $name, array $context = [])
+    {
         $this->logger->log(LogLevel::DEBUG, __METHOD__, ['name' => $name, 'context' => $context]);
 
         return $this->twig->render($name, $context);

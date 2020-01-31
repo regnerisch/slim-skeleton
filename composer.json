@@ -1,20 +1,7 @@
 {
     "name": "regnerisch/slim-skeleton",
-    "description": "Slim framework skeleton",
     "type": "project",
-    "require": {
-        "slim/slim": "^4.3",
-        "twig/twig": "^3.0",
-        "zendframework/zend-diactoros": "^2.2",
-        "php-di/php-di": "^6.0",
-        "monolog/monolog": "^2.0",
-        "ext-json": "*",
-        "middlewares/trailing-slash": "^2.0",
-        "middlewares/cors": "^2.0"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-master"
-    },
+    "description": "Slim framework skeleton",
     "license": "ISC",
     "authors": [
         {
@@ -22,6 +9,21 @@
             "email": "regnerjonas@pm.me"
         }
     ],
+    "require": {
+        "ext-json": "*",
+        "laminas/laminas-diactoros": "^2.2",
+        "middlewares/cors": "^2.0",
+        "middlewares/trailing-slash": "^2.0",
+        "monolog/monolog": "^2.0",
+        "php-di/php-di": "^6.0",
+        "slim/slim": "^4.3",
+        "symfony/dotenv": "^5.0",
+        "twig/twig": "^3.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "regnerisch/php-cs-fixer-config": "^1.0"
+    },
     "autoload": {
         "psr-4": {
             "Regnerisch\\Skeleton\\": "app/"

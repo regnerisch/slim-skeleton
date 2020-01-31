@@ -1,25 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 use DI\ContainerBuilder;
-use Monolog\Logger;
 
 return static function (ContainerBuilder $containerBuilder) {
     $containerBuilder->addDefinitions([
         'settings' => [
-            'environment' => 'development',
+            'environment' => $_ENV['ENVIRONMENT'],
             'logger' => [
                 'name' => 'Monolog',
                 'path' => __DIR__ . '/../var/logs/logs.log',
-                'level' => Logger::DEBUG,
+                'level' => (int) $_ENV['LOG_LEVEL'],
             ],
             'cors' => [
-                'scheme' => 'http',
-                'host' => 'localhost',
-                'port' => 8080,
+                'scheme' => parse_url($_ENV['SERVER_ORIGIN'], PHP_URL_SCHEME),
+                'host' => parse_url($_ENV['SERVER_ORIGIN'], PHP_URL_HOST),
+                'port' => parse_url($_ENV['SERVER_ORIGIN'], PHP_URL_PORT),
                 'allowedOrigins' => [],
                 'allowedMethods' => [],
                 'allowedHeaders' => [],
-            ]
-        ]
+            ],
+        ],
     ]);
 };
