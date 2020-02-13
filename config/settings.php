@@ -8,6 +8,9 @@ return static function (ContainerBuilder $containerBuilder) {
     $containerBuilder->addDefinitions([
         'settings' => [
             'environment' => $_ENV['ENVIRONMENT'],
+            'doctrine' => [
+                'url' => $_ENV['DATABASE_URL']
+            ],
             'logger' => [
                 'name' => 'Monolog',
                 'path' => __DIR__ . '/../var/logs/logs.log',

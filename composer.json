@@ -11,6 +11,7 @@
     ],
     "require": {
         "ext-json": "*",
+        "doctrine/orm": "^2.7",
         "laminas/laminas-diactoros": "^2.2",
         "middlewares/cors": "^2.0",
         "middlewares/trailing-slash": "^2.0",
