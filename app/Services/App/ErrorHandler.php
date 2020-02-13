@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Regnerisch\Skeleton\Services;
+namespace Regnerisch\Skeleton\Services\App;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Log\LoggerInterface;

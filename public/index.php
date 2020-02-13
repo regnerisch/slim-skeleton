@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 use DI\ContainerBuilder;
 use Laminas\Diactoros\ServerRequestFactory;
-use Psr\Log\LoggerInterface;
-use Regnerisch\Skeleton\Services\ErrorHandler;
 use Slim\Factory\AppFactory;
 use Symfony\Component\Dotenv\Dotenv;
 
@@ -26,16 +24,10 @@ $container = $containerBuilder->build();
 AppFactory::setContainer($container);
 $app = AppFactory::create();
 
-$middlewares = require __DIR__ . '/../config/middlewares.php';
-$middlewares($app, $container);
-
 $app->addRoutingMiddleware();
 
-// Error handling
-$isDev = 'development' === $_ENV['ENVIRONMENT'];
-$errorMiddleware = $app->addErrorMiddleware($isDev, true, true);
-$errorHandler = new ErrorHandler($app->getCallableResolver(), $app->getResponseFactory(), $container->get(LoggerInterface::class));
-$errorMiddleware->setDefaultErrorHandler($errorHandler);
+$middlewares = require __DIR__ . '/../config/middlewares.php';
+$middlewares($app, $container);
 
 $routes = scandir(__DIR__ . '/../routes');
 foreach ($routes as $route) {

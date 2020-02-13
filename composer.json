@@ -16,13 +16,12 @@
         "middlewares/trailing-slash": "^2.0",
         "monolog/monolog": "^2.0",
         "php-di/php-di": "^6.0",
-        "slim/slim": "^4.3",
-        "symfony/dotenv": "^5.0",
-        "twig/twig": "^3.0"
+        "slim/slim": "^4.4",
+        "symfony/dotenv": "^5.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master",
-        "regnerisch/php-cs-fixer-config": "^1.0"
+        "regnerisch/php-cs-fixer-config": "^1.0",
+        "roave/security-advisories": "dev-master"
     },
     "autoload": {
         "psr-4": {
