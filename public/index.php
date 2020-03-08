@@ -2,39 +2,26 @@
 
 declare(strict_types=1);
 
-use DI\ContainerBuilder;
+use App\ServiceProviders\AppServiceProvider;
+use DI\Bridge\Slim\Bridge;
 use Laminas\Diactoros\ServerRequestFactory;
-use Slim\Factory\AppFactory;
 use Symfony\Component\Dotenv\Dotenv;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+define('ABS_PATH', __DIR__ . '/..');
+
 $dotenv = new Dotenv();
-$dotenv->load(__DIR__ . '/../.env');
-$containerBuilder = new ContainerBuilder();
+$dotenv->load(ABS_PATH . '/.env');
 
-$settings = require __DIR__ . '/../config/settings.php';
-$settings($containerBuilder);
+$appServiceProvider = new AppServiceProvider();
+$container = $appServiceProvider->registerContainer();
 
-$dependencies = require __DIR__ . '/../config/dependencies.php';
-$dependencies($containerBuilder);
-
-$container = $containerBuilder->build();
-
-AppFactory::setContainer($container);
-$app = AppFactory::create();
+$app = Bridge::create($container);
 
 $app->addRoutingMiddleware();
 
-$middlewares = require __DIR__ . '/../config/middlewares.php';
-$middlewares($app, $container);
-
-$routes = scandir(__DIR__ . '/../routes');
-foreach ($routes as $route) {
-    if (false !== stripos($route, '.php')) {
-        require_once __DIR__ . '/../routes/' . $route;
-    }
-}
+$appServiceProvider->register($app);
 
 $request = ServerRequestFactory::fromGlobals();
 $app->run($request);

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Regnerisch\Skeleton\Services\App;
+namespace App;
 
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Log\LoggerInterface;
-use Psr\Log\LogLevel;
+use Slim\Handlers\ErrorHandler;
 use Slim\Interfaces\CallableResolverInterface;
 
-class ErrorHandler extends \Slim\Handlers\ErrorHandler
+final class CustomErrorHandler extends ErrorHandler
 {
     private $logger;
 
@@ -21,7 +21,6 @@ class ErrorHandler extends \Slim\Handlers\ErrorHandler
 
     protected function logError(string $error): void
     {
-        parent::logError($error);
-        $this->logger->log(LogLevel::ERROR, $error);
+        $this->logger->error($error);
     }
 }
