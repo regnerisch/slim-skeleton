@@ -40,11 +40,11 @@ class MiddlewareServiceProvider
 
         $corsSettings = new Settings();
 
-        if (!$config->has('cors.scheme') || !$config->has('cors.host') || !$config->has('cors.post')) {
+        if (!$config->has('cors.scheme') || !$config->has('cors.host') || !$config->has('cors.port')) {
             $corsSettings->disableCheckHost();
         } else {
             $corsSettings->enableCheckHost();
-            $corsSettings->setServerOrigin($config->get('cors.scheme'), $config->get('cors.host'), $config->get('cors.post'));
+            $corsSettings->setServerOrigin($config->get('cors.scheme'), $config->get('cors.host'), $config->get('cors.port'));
         }
 
         if (in_array('*', $config->get('cors.allowedOrigins', []), true)) {
