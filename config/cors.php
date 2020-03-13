@@ -11,9 +11,10 @@ return [
         'allowedMethods' => [],
         'allowedHeaders' => [],
         'exposedHeaders' => [],
-        // 'credentialsSupported' => false
-        // 'preFlightCacheMaxAge' => 0
-        // 'preFlightAddAllowedMethodsToResponse' => false
-        // 'preFlightAddAllowedHeadersToResponse' => false
+//         'credentialsSupported' => false,
+//         //Required for NOT-GET requests
+//         'preFlightCacheMaxAge' => 0,
+//         'preFlightAddAllowedMethodsToResponse' => false,
+//         'preFlightAddAllowedHeadersToResponse' => false,
     ],
 ];

@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\ServiceProviders;
+namespace App\ServiceProvider;
 
 use DI\ContainerBuilder;
+use League\Event\Emitter;
+use League\Event\EmitterInterface;
 use Monolog\Handler\StreamHandler;
 use Monolog\Logger;
 use Noodlehaus\Config;
@@ -30,6 +32,9 @@ class ContainerServiceProvider
                 $logger->pushHandler($handler);
 
                 return $logger;
+            },
+            EmitterInterface::class => static function (ContainerInterface $container) {
+                return new Emitter();
             },
         ]);
 

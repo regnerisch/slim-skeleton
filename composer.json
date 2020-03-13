@@ -6,14 +6,15 @@
     "authors": [
         {
             "name": "Jonas Regner",
-            "email": "regnerjonas@protonmail.me"
+            "email": "regnerjonas@protonmail.com"
         }
     ],
     "require": {
-        "php": ">=7.1",
+        "php": ">=7.2.5",
         "ext-json": "*",
         "hassankhan/config": "^2.1",
         "laminas/laminas-diactoros": "^2.2",
+        "league/event": "^2.2",
         "middlewares/cors": "^2.0",
         "middlewares/trailing-slash": "^2.0",
         "monolog/monolog": "^2.0",

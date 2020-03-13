@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\ServiceProviders\AppServiceProvider;
+use App\ServiceProvider\AppServiceProvider;
 use DI\Bridge\Slim\Bridge;
 use Laminas\Diactoros\ServerRequestFactory;
 use Symfony\Component\Dotenv\Dotenv;

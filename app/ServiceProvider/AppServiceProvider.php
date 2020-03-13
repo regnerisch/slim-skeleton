@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\ServiceProviders;
+namespace App\ServiceProvider;
 
 use DI\ContainerBuilder;
 use Psr\Container\ContainerInterface;
@@ -17,6 +17,7 @@ class AppServiceProvider
 
     public function register(App $app): void
     {
+        (new EventServiceProvider())($app);
         (new MiddlewareServiceProvider())($app);
         (new RouteServiceProvider())($app);
     }
