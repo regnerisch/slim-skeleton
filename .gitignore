@@ -1,4 +1,5 @@
 var/
 vendor/
 .env
+.lando.yml
 .php_cs.cache
